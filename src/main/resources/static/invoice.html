@@ -1,0 +1,118 @@
+<html>
+<head>
+
+<title>invoice generator</title>
+<link href='https://fonts.googleapis.com/css?family=Adamina'
+	rel='stylesheet'>
+<link rel="stylesheet" href="cssinvoice.css">
+<script src="html2pdf.bundle.js"></script>
+<script type="text/javascript" src="jsinvoice.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+	<h1>STAR OFFICE SUPPLIES</h1>
+	<h4>INVOICE</h4>
+	<h6 id="tips">
+		&lt;&lt; To fill a field : say the wakeword followed by the data to be
+		filled &gt;&gt; &nbsp &lt;&lt;<img id="pdfdownload" src="pdfdow.png"
+			style="width: 60px;">&nbsp say,"download pdf" &gt;&gt; &nbsp
+		&lt;&lt;<img src="csvdown.jpg" style="width: 35px;">&nbsp
+		say,"download csv" &gt;&gt;&nbsp &lt;&lt; <img src="mailsend.png"
+			style="width: 50px;">&nbsp say,"send mail" &gt;&gt;
+	</h6>
+
+	<div id="invoice">
+
+		<div class="leftdiv">
+			<form name="business">
+				<h3>
+					<b> FROM </b>
+				</h3>
+				<label for="businame">Name </label> <input type="text" id="businame"
+					name="businame" placeholder="wakeword: Business Name"><br>
+				<br> <label for="busimail">Email </label> <input type="text"
+					id="busimail" name="busimail" placeholder="wakeword: Business Mail">
+				<br> <br> <label for="busiad" style="vertical-align: top"
+					class="help">Address </label>
+				<textarea id="busiad" class="help" rows="3" cols="30"
+					placeholder="wakeword: Business Address"></textarea>
+				<br> <br> <label for="busiphone">Phone </label> <input
+					type="text" id="busiphone" placeholder="wakeword: Business phone"
+					pattern="[0-9]{8}" required><br> <br>
+			</form>
+		</div>
+
+		<div class="rightdiv">
+			<form name="client">
+				<h3>
+					<b> BILL TO</b>
+				</h3>
+				<label for="clientname">Name </label> <input type="text"
+					id="clientname" name="clientname"
+					placeholder="wakeword: Client Name"> <br></br> <label
+					for="clientmail">Email </label> <input type="text" id="clientmail"
+					name="clientmail" placeholder="wakeword: Client Mail"> <br></br>
+				<label for="clientad" style="vertical-align: top" class="help">Address
+				</label>
+				<textarea id="clientad" class="help" rows="3" cols="30"
+					placeholder="wakeword: Client Address"></textarea>
+				<br></br> <label for="clientph">Phone </label> <input type="text"
+					id="clientph" placeholder="wakeword: Client phone"
+					pattern="[0-9]{8}" required> <br> <br>
+			</form>
+		</div>
+
+		<div class="downdiv">
+			<form name="invoicedet">
+				<label for="invoiceno"> Invoice Number </label> <input type="text"
+					id="invoiceno" placeholder="wakeword: invoice number"> <br></br>
+				<label for="invoicedate">Invoice Date</label> <input type="text"
+					id="invoicedate" placeholder="wakeword: Invoice date"><span
+					id="dateeg">&nbsp (Example: 2021 January 1)</span> <br></br> <label
+					for="invoicedue">Invoice Due Date</label> <input type="text"
+					id="invoicedue" placeholder="wakeword: Invoice Due Date"> <br></br>
+			</form>
+			<span style="margin-left: 70px;" id="billtip">&lt;&lt; To add
+				a row to the bill, say "add row" &gt;&gt; &nbsp &lt;&lt; To
+				calculate final total, say "calculate total" &gt;&gt;</span>
+
+		</div>
+
+
+		<div id="tableb">
+			<table id="bill" border="1">
+
+				<tr>
+					<th id=th1>DESCRIPTION</th>
+					<th id=th2>QUANTITY</th>
+					<th id=th3>UNIT PRICE</th>
+					<th id=th4>TOTAL</th>
+				</tr>
+
+				<tr>
+					<td><input class="left removeborder" type="text" id="desc1"
+						placeholder="wakeword: product1" /><span id="prodinvalid"
+						style="color: red; visibility: hidden">invalid product</span></td>
+					<td><input class="center removeborder" type="text"
+						id="quantity1" placeholder="wakeword: amount1" pattern="[0-9]*" /></td>
+					<td><input class="right removeborder" type="text" id="unit1"
+						placeholder="0.00" /></td>
+					<td><input class="right removeborder" type="text" id="total1"
+						placeholder="0.00" /></td>
+
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>

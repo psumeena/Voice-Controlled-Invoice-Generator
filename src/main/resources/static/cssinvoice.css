@@ -1,0 +1,136 @@
+* {
+	font-family: 'Adamina';
+	font-size: large;
+}
+
+body {
+	background-image: url('\sample3.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+h1 {
+	border-style: solid;
+	text-align: center;
+	border-color: #ECECEC;
+	background: #ECECEC;
+	border-spacing: 100px;
+	height: 75px;
+	font-size: 200%;
+}
+
+h4 {
+	text-align: center;
+	font-size: 150%;
+}
+
+h6 {
+    text-align:center;
+	font-weight: normal;
+	opacity: 0.5;
+}
+
+input, textarea {
+	outline: none;
+	border: none;
+	margin-left: 20px;
+	width: 250px;
+	background: rgba(0, 0, 0, 0);
+}
+
+input[type=date]::-webkit-input-placeholder {
+    opacity:0.4;
+}
+
+::-webkit-input-placeholder {
+	color: black; /*Change the placeholder color*/
+	opacity: 0.3; /*Change the opacity between 0 and 1*/
+}
+
+.leftdiv {
+	float: left;
+	left: 290px;
+	position: relative;
+	padding-bottom: 100px;
+	display: grid;
+}
+
+.rightdiv {
+	position: absolute;
+	right: 300px;
+	float: right;
+	display: grid;
+}
+
+.downdiv {
+	position: absolute;
+	top: 640px;
+	height: 100px;
+	left: 300px;
+}
+
+#bill {
+	position: absolute;
+	margin: 600px 30px 10px 250px;
+	border-collapse: collapse;
+}
+
+th, td {
+	bottom: 80px;
+	width: 200px;
+	height: 30px;
+}
+
+th {
+	text-align: center;
+}
+
+.center {
+	outline: none;
+	border: none;
+	text-align: center;
+}
+
+.right {
+	outline: none;
+	border: none;
+	text-align: right;
+}
+
+.left {
+	outline: none;
+	border: none;
+	text-align: left;
+}
+
+.removeborder {
+	outline: none;
+	border: none;
+}
+
+#totid, #total {
+	text-align: right;
+	border: none;
+}
+
+#lastrow {
+	border: none;
+}
+
+#fbill {
+	display: none;
+}
+
+#pdfdownload
+{
+	width: 60px;
+}
+#dateeg,#billtip
+{
+	opacity:0.5;
+}
+
+label {
+	font-size: 25px;
+}

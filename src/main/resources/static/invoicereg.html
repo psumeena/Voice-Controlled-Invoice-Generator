@@ -1,0 +1,291 @@
+<html>
+<head>
+<title>registration form</title>
+<link href='https://fonts.googleapis.com/css?family=Adamina'
+	rel='stylesheet'>
+<style>
+* {
+	font-family: 'Adamina';
+}
+
+h2 {
+	border-style: solid;
+	text-align: center;
+	border-color: #ECECEC;
+	background: #ECECEC;
+	border-spacing: 150px;
+	margin-top: 8px;
+	height: 75px;
+	font-size: 200%;
+}
+
+body {
+	background-image: url('\sample3.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+input {
+	outline: none;
+	border: none;
+	margin-left: 20px;
+	width: 250px;
+	font-size: 20px;
+}
+
+h4 {
+	text-align: center;
+	font-size: 28px;
+}
+
+table {
+	margin-top: 50px;
+	margin-left: 100px;
+	float: left;
+}
+
+#reg {
+	margin-top: 75px;
+	margin-right: 20px;
+	width: 250px;
+}
+
+h3 {
+	text-align: center;
+	font-weight: normal;
+	opacity: 0.5;
+}
+
+td {
+	padding: 15px;
+	border-spacing: 20px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+td>input {
+	display: inline-block;
+	height: 30px;
+	width: 300px;
+}
+
+td>button {
+	padding: 5px 7px;
+	text-align: center;
+	text-decoration: none;
+	position: relative;
+	float: left;
+	align: left;
+	font-size: 20px;
+}
+
+input {
+	margin-left: 20px;
+	width: 250px;
+	background: rgba(0, 0, 0, 0);
+}
+</style>
+</head>
+<body>
+	<h2>STAR OFFICE SUPPLIES</h2>
+	<h4>CLIENT REGISTRATION</h4>
+	<h3 id="tips">&lt;&lt; To fill a field : say the wakeword followed
+		by the data to be filled &gt;&gt;</h3>
+	<table border="0" align="center">
+		<tbody>
+
+			<tr>
+				<td><label for="clientname">Client name </label></td>
+				<td><input id="clientname" type="text"
+					placeholder="wakeword: client name" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="clientmail">Client mail </label></td>
+				<td><input id="clientmail" type="text"
+					placeholder="wakeword: client mail" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="clientaddress">Client Address </label></td>
+				<td><input id="clientaddress" type="text"
+					placeholder="wakeword: client address" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="clientphone">Client Phone </label></td>
+				<td><input id="clientphone" type="text"
+					placeholder="wakeword: client phone" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="2" align="center" style="padding: 10px;"><button
+						id=btn onclick="getValues()">Register client</button></td>
+
+				<td><span id="regack" style="color: green; visibility: hidden">Registration
+						Successful!</span></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<img src="sample4.png" id="reg">
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', speechToText, false);
+var mailToId=
+{		
+		"client mail":"clientmail",
+		"client mel":"clientmail",
+		"client Mel":"clientmail"
+
+};
+var addressToId=
+	{
+		"client address": "clientaddress",
+		"client adress":"clientaddress",
+		"clientaddress":"clientaddress"
+	};
+	
+	function speechToText() {
+
+	const recognition = new webkitSpeechRecognition();
+	recognition.lang = 'en-US';
+	recognition.continuous = true;
+
+	recognition.onresult = function(event) {
+		const results = event.results;
+		const transcript = results[results.length-1][0].transcript;
+
+		var req1= transcript.split(",");
+		var req= req1.toString();
+		console.log("you said: "+ req);
+	    req=req.toLowerCase();
+	    req=req.trim();
+		var keys = Object.keys(mailToId);
+		var values=Object.values(mailToId);
+		
+		var keys1=Object.keys(addressToId);
+		var values1=Object.values(addressToId);
+		
+		
+	    if(req.includes("client name")) //clientname
+	    	{
+	    	var namewake="client name";
+	    	var n=req.lastIndexOf(namewake)+namewake.length;
+	    	var setcname=req.substring(n);
+	    	setcname=titleCase(setcname);
+	    	setcname=setcname.trim();
+	    	document.getElementById("clientname").value=setcname;
+	    	console.log("Data to be set: "+setcname);
+	    	}
+	    
+	    for(var i=0; i<keys.length;i++) //clientmail
+	    	{
+	    if(req.includes(keys[i]))
+	    		{
+	    	  var m=req.lastIndexOf(keys[i])+keys[i].length;
+	    	  var setmail=req.substring(m);
+	    	  setmail=setmail.replace(/\s/g,'');
+	    	  if(setmail.includes("at"))
+	    		  {
+	    		  setmail=setmail.replace("at","@");
+	    		  }
+	    	  console.log("Data to be set: "+setmail);
+	    	  document.getElementById(values[i]).value=setmail;
+	    		}
+	    	}
+	    
+	    for(var j=0;j<keys1.length;j++)  //clientaddress
+	    	{
+	    	if(req.includes(keys1[j]))
+	    		{
+	    		var o=req.lastIndexOf(keys1[j])+keys1[j].length;
+	    		var setaddress=req.substring(o);
+	    		setaddress=setaddress.trim();
+	  
+	    		if(setaddress.trim().includes("number"))
+	    			{
+	    			setaddress=setaddress.replace("number","No.");
+	    			}
+	    		console.log("Data to be set: "+setaddress);
+	    		document.getElementById(values1[j]).value=setaddress;
+	    		}
+	    		
+	    	}
+	    
+	    if(req.includes("client phone"))   //clientphone
+	    	{
+	    	var phonewake="client phone";
+	    	var a=req.lastIndexOf(phonewake)+phonewake.length;
+	    	var setphone=req.substring(a);
+	    	setphone=setphone.trim();
+	    	console.log("Data to be set: "+setphone);
+	    	document.getElementById("clientphone").value=setphone;
+	    	}
+	   
+	    if(req==="register client")
+	    	{
+	    	getValues();
+	    	}
+	
+	
+		}
+		recognition.start();
+		recognition.addEventListener('end', () => recognition.start()); 
+
+	}
+function getValues() {
+	
+    var clientname=document.getElementById("clientname").value;
+   
+    var clientmail=document.getElementById("clientmail").value
+   
+    var clientaddress= document.getElementById("clientaddress").value;
+   
+    var clientphone=document.getElementById("clientphone").value;
+
+    var clientobj=
+    	{
+    		client_name: clientname,
+    		client_mail: clientmail,
+    		client_address: clientaddress,
+    		client_phone: clientphone
+    	};
+    
+	var xhr=new XMLHttpRequest();
+	xhr.open('POST','http://localhost:8080/invoice/client',true);
+	xhr.setRequestHeader('Content-Type','application/json');
+	xhr.send(JSON.stringify(clientobj));
+
+	xhr.onreadystatechange=function()
+{
+		if(this.readyState==4 && this.status==200)
+			{
+			xhr.onload=function(){
+		   var client1=JSON.parse(xhr.responseText);
+		   document.getElementById("regack").style.visibility="visible";
+			var cid=client1.client_id;
+			var cname=client1.client_name;
+		    console.log(cid);
+		    console.log(cname);
+			window.open('/invoice.html?clientid='+client1.client_id+'&clientname='+client1.client_name+'&clientmail='+client1.client_mail+'&clientaddress='+client1.client_address,'_self');
+		
+			};
+			}
+		};
+		 
+};
+
+function titleCase(str) {
+	   var splitStr = str.toLowerCase().split(' ');
+	   for (var i = 0; i < splitStr.length; i++) {
+	       
+	       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+	   }
+	  
+	   return splitStr.join(' '); 
+	}
+	
+</script>
+</html>

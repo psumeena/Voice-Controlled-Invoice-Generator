@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Adamina' rel='stylesheet'>
+<style>
+
+.myDiv {
+	text-align: center;
+}
+
+.left_container {
+	position: relative;
+}
+
+.right_container {
+	position: relative;
+}
+
+.icon:hover {
+	transform: scale(1.2);
+	/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.icon {
+	height: 100px;
+	top: 100px;
+	margin: 0 auto;
+	transition: transform .2s; /* Animation */
+}
+
+.text_icon {
+	padding-bottom: 10px;
+	font-size: 25px;
+}
+
+.box {
+	float: left;
+	width: 40%;
+	padding: 50px;
+}
+
+.bg {
+	/* The image used */
+	background-image: url("sample3.jpg");
+	/* Full height */
+	height: 100%;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.heading_text {
+    padding: 40px;
+    text-align: center;
+    background-color: #ececec;
+    
+    }
+    
+    .heading_text2 {
+    padding: 40px;
+    font-size: 30px;
+    text-align: center;
+    
+    }
+  #tip
+  {
+  opacity:0.5;
+  }
+
+body, html {
+    font-size: 22px;
+	height: 100%;
+	font-family: 'Adamina';
+}
+</style>
+<title>Invoice generator home</title>
+</head>
+<body class="bg">
+
+	<h2 class="heading_text">STAR OFFICE SUPPLIES</h2>
+
+	<div class="myDiv">
+		<p class="heading_text2"><b><i>Generate invoice on the fly</i></b></p>
+		<p id="tip">&lt;&lt; just say the below content to proceed &gt;&gt;</p>
+	</div>
+	<div class="myDiv">
+		<div class="box">
+			<div class="text_icon"><b><i>For new client</i></b></div>
+			<img class="icon" src="sample.png" />
+		</div>
+		<div class="box">
+			<div class="text_icon"><b><i>For existing client</i></b></div>
+			<img class="icon" src="sample2.png" />
+		</div>
+	</div>
+
+</body>
+<script>
+var newc="for new client";
+var exsc="for existing client";
+document.addEventListener('DOMContentLoaded', speechToText, false);
+
+
+	function speechToText() {
+
+	const recognition = new webkitSpeechRecognition();
+	recognition.lang = 'en-US';
+	recognition.continuous = true;
+
+	recognition.onresult = function(event) {
+		const results = event.results;
+		const transcript = results[results.length-1][0].transcript;
+
+		var req1= transcript.split(",");
+		var req= req1.toString();
+		req=req.trim();
+		req=req.toLowerCase();
+		console.log("you said: "+ req);
+		
+		if(req===exsc)
+			{
+			window.open('invoice.html',"_self");
+			}
+		if(req===newc)
+			{
+			window.open('invoicereg.html',"_self");
+			}
+	
+		}
+		recognition.start();
+		recognition.addEventListener('end', () => recognition.start()); 
+
+	}
+
+</script>
+</html>
