@@ -1,5 +1,5 @@
 # Voice-Controlled-Invoice-Generator
-Voice controlled invoice generator: A spring boot based web application that aids specially-abled people to generate invoice without any hassle
+A spring boot based web application that aids specially-abled people to generate invoice without any hassle
 ## Steps to run the project
 
 ### To import the project in Eclipse IDE follow the steps,
