@@ -4,11 +4,11 @@ A spring boot based web application that aids specially-abled people to generate
 
 ### To import the project in Eclipse IDE follow the steps,
 
-1) File->import->under general folder choose “Existing projects into workspace” and click Next.
+1) File->import->under general folder choose **“Existing projects into workspace”** and click **Next**.
 
  ![image](https://user-images.githubusercontent.com/82094868/162765817-3802e739-ae74-44fe-a21f-19d02b79a19c.png)
 
-2) In “select archive file”, browse for the downloaded project zip file and check “vcig” under projects and click Finish.
+2) In **“select archive file”**, browse for the downloaded project zip file and check **“vcig”** under projects and click **Finish**.
 
  ![image](https://user-images.githubusercontent.com/82094868/162767128-676c359c-24f9-41f7-9b47-94d43e6c9e3f.png)
 
@@ -68,7 +68,7 @@ A spring boot based web application that aids specially-abled people to generate
 
 ` insert into product(product_name, product_quantity, "product_cost(Rupees)")values('pen holder',1,150); `
 
-2) Goto dataacess.java under com.tables.access and change the password (ps2717) with your PostgreSQL password and DB name (invoice) if applicable.
+2) Goto **dataacess.java** under **com.tables.access** and change the password (ps2717) with your PostgreSQL password and DB name (invoice) if applicable.
  
 **DataAccess.java location**
 
@@ -87,10 +87,9 @@ Right click on the project “vcig”->Build Path->Configure build path->under l
  
 ![image](https://user-images.githubusercontent.com/82094868/162769372-8fd49612-8e25-4c89-bfff-3fc91f2cf663.png)
 
-2) Double click on Maven Build and choose the project “vcig” in Base directory. In Goals, enter ` spring-boot:run ` then click Run button.
+2) Double click on Maven Build and choose the project **“vcig”** in Base directory. In Goals, enter ` spring-boot:run ` then click Run button.
 
 ![image](https://user-images.githubusercontent.com/82094868/162769530-8fbacfe6-2daa-4f0d-8884-e0ce9fec2617.png)
-
 
 3) On Successful run, the console will display the following,
 
