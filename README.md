@@ -85,8 +85,6 @@ Right click on the project “vcig”->Build Path->Configure build path->under l
 
 1) Right click on the project “vcig”->Run As->Run Configurations…
  
-![image](https://user-images.githubusercontent.com/82094868/162769372-8fd49612-8e25-4c89-bfff-3fc91f2cf663.png)
-
 2) Double click on Maven Build and choose the project **“vcig”** in Base directory. In Goals, enter ` spring-boot:run ` then click Run button.
 
 ![image](https://user-images.githubusercontent.com/82094868/162769530-8fbacfe6-2daa-4f0d-8884-e0ce9fec2617.png)
@@ -101,16 +99,16 @@ Right click on the project “vcig”->Build Path->Configure build path->under l
  
  ![image](https://user-images.githubusercontent.com/82094868/162769609-40e9c589-c9c0-4b1d-b91c-c61e40cb7935.png)
 
-Say “For new client” to generate invoice for a new client or “For existing client” to generate invoice for an already existing client (registered in DB). Former will be redirected to Client registration page and latter will be redirected to invoice generating page.
+Say **“For new client”** to generate invoice for a new client or **“For existing client”** to generate invoice for an already existing client (registered in DB). Former will be redirected to Client registration page and latter will be redirected to invoice generating page.
 
 #### Client registration page:
 
  ![image](https://user-images.githubusercontent.com/82094868/162769667-bdb284f4-3a82-48a3-b080-03cba6b78710.png)
 
-After filling all the fields via voice, say “register client” to register the client in DB
+After filling all the fields via voice, say **“register client”** to register the client in DB
 
 #### Invoice generating page:
 
  ![image](https://user-images.githubusercontent.com/82094868/162769686-3c6e8379-f663-4d6a-b935-b47123e19b98.png)
 
-After filling all the fields via voice, download and send mail to the client through the given voice commands.
+After filling all the fields via voice, download and send the invoice to client's email through the given voice commands.
